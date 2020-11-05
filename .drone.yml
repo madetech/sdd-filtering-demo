@@ -12,9 +12,9 @@ volumes:
 steps:
 - name: build
   image: node:14
-  volumes:
-  - name: artefacts
-    path: /
+  # volumes:
+  # - name: artefacts
+  #   path: /
   commands:
     - pwd
     - npm ci

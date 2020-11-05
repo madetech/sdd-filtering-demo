@@ -31,13 +31,13 @@ steps:
   commands:
     - env
     - cd /artefacts
-    - sls deploy
+    - sls deploy --verbose
 # - name: notify
 #   image: drillster/drone-email
 #   settings:
-#     host: 
+#     host:
 #     skip_verify: true
-#     from: 
+#     from:
 #   when:
 #     status:
 #     - changed

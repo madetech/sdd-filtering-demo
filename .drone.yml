@@ -6,27 +6,32 @@ clone:
 
 volumes:
 - name: artefacts
-	host:
-	  path: artefacts
+  host:
+    path: artefacts
 
 steps:
 - name: build
   image: node:14
   volumes:
   - name: artefacts
-    path: /
+    path: /artefacts
   commands:
-    - pwd
     - npm ci
+    - cp -r * /artefacts
 - name: build and deploy
-  image: amaysim/serverless
+  image: amaysim/serverless:1.72.0
   volumes:
   - name: artefacts
     path: /artefacts
+  environment:
+    aws_access_key_id:
+      from_secret: aws_access_key_id
+    aws_secret_access_key:
+      from_secret: aws_secret_access_key
   commands:
-    - pwd
+    - env
     - cd /artefacts
-	  - sls deploy
+    - sls deploy
 # - name: notify
 #   image: drillster/drone-email
 #   settings:

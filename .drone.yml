@@ -18,7 +18,7 @@ steps:
   commands:
     - npm ci
     - cp -r * /artefacts
-- name: build and deploy
+- name: deploy
   image: amaysim/serverless:1.72.0
   volumes:
   - name: artefacts

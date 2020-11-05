@@ -16,7 +16,6 @@ steps:
   - name: artefacts
     path: /artefacts
   commands:
-    - pwd
     - npm ci
     - cp -r * /artefacts
 - name: build and deploy
@@ -30,7 +29,7 @@ steps:
     aws_secret_access_key:
       from_secret: aws_secret_access_key
   commands:
-    - pwd
+    - env
     - cd /artefacts
     - sls deploy
 # - name: notify

@@ -1,0 +1,39 @@
+kind: pipeline
+name: default
+
+clone:
+  skip_verify: true
+
+volumes:
+- name: artefacts
+	host:
+	  path: artefacts
+
+steps:
+- name: build
+  image: node:14
+  volumes:
+  - name: artefacts
+    path: /
+  commands:
+    - pwd
+    - npm ci
+- name: build and deploy
+  image: amaysim/serverless
+  volumes:
+  - name: artefacts
+    path: /artefacts
+  commands:
+    - pwd
+    - cd /artefacts
+	  - sls deploy
+# - name: notify
+#   image: drillster/drone-email
+#   settings:
+#     host: 
+#     skip_verify: true
+#     from: 
+#   when:
+#     status:
+#     - changed
+#     - failure

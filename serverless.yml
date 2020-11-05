@@ -5,6 +5,7 @@ provider:
     runtime: nodejs12.x
     stage: dev
     region: eu-west-2
+    apiGateway.shouldStartNameWithService: true
 
 functions:
     app:
@@ -25,4 +26,4 @@ resources:
                 KeySchema:
                     - AttributeName: DrivingLicenseNumber
                       KeyType: HASH
-                BillingMode: PAY_PER_REQUEST 
+                BillingMode: PAY_PER_REQUEST

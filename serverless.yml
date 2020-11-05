@@ -12,3 +12,17 @@ functions:
         events:
             - http: GET /
             - http: 'GET /{proxy+}'
+
+resources:
+    Resources:
+        DynamoDB:
+            Type: AWS::DynamoDB::Table
+            Properties:
+                TableName: Driver
+                AttributeDefinitions:
+                    - AttributeName: DrivingLicenseNumber
+                      AttributeType: S
+                KeySchema:
+                    - AttributeName: DrivingLicenseNumber
+                      KeyType: HASH
+                BillingMode: PAY_PER_REQUEST 

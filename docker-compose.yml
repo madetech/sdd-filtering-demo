@@ -12,13 +12,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/drone:/data
     environment:
-      - DRONE_GITHUB_CLIENT_ID=
-      - DRONE_GITHUB_CLIENT_SECRET=
       - DRONE_RUNNER_CAPACITY=2
       - DRONE_SERVER_HOST=localhost:80
       - DRONE_SERVER_PROTO=http
-      - DRONE_RPC_SECRET=d41f2f9d5bb2d992f3328c8b93e51432
       - DRONE_TLS_AUTOCERT=false
+    env_file:
+      - .env
 
   drone-runner:
     image: drone/drone-runner-docker:1
@@ -31,6 +30,7 @@ services:
     environment:
       - DRONE_RPC_PROTO=http
       - DRONE_RPC_HOST=drone-ci:80
-      - DRONE_RPC_SECRET=d41f2f9d5bb2d992f3328c8b93e51432
       - DRONE_RUNNER_CAPACITY=2
       - DRONE_RUNNER_NAME=${HOSTNAME}
+    env_file:
+      - .env

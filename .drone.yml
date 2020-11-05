@@ -12,12 +12,13 @@ volumes:
 steps:
 - name: build
   image: node:14
-  # volumes:
-  # - name: artefacts
-  #   path: /
+  volumes:
+  - name: artefacts
+    path: /artefacts
   commands:
     - pwd
     - npm ci
+    - cp -r * /artefacts
 - name: build and deploy
   image: amaysim/serverless
   volumes:

@@ -30,7 +30,7 @@ steps:
       from_secret: aws_secret_access_key
   commands:
     - cd /artefacts
-    - sls deploy --verbose
+    - SLS_DEBUG=1 sls deploy --verbose
 # - name: notify
 #   image: drillster/drone-email
 #   settings:

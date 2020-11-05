@@ -24,6 +24,11 @@ steps:
   volumes:
   - name: artefacts
     path: /artefacts
+  environment:
+    aws_access_key_id:
+      from_secret: aws_access_key_id
+    aws_secret_access_key:
+      from_secret: aws_secret_access_key
   commands:
     - pwd
     - cd /artefacts

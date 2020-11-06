@@ -11,7 +11,7 @@ volumes:
 
 steps:
 - name: build
-  image: node:14
+  image: node:12
   volumes:
   - name: artefacts
     path: /artefacts

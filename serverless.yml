@@ -14,6 +14,7 @@ functions:
         events:
             - http: GET /
             - http: 'GET /{proxy+}'
+    app:
         name: DynamoToElastic
         handler: d2e.handler
             - stream:

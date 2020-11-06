@@ -8,13 +8,13 @@ provider:
     apiGateway.shouldStartNameWithService: true
 
 functions:
-    app:
+    api-app:
         name: API
         handler: index.handler
         events:
             - http: GET /
             - http: 'GET /{proxy+}'
-    app:
+    d2e-app:
         name: DynamoToElastic
         handler: d2e.handler
         events:

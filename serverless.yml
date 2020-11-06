@@ -22,11 +22,11 @@ functions:
                 type: dynamodb
                 batchSize: 1
                 enabled: true
-                arn: { "Fn::GetAtt": ["SDDDriverDynamoDB", "StreamArn"] }
+                arn: { "Fn::GetAtt": ["DynamoDB", "StreamArn"] }
 
 resources:
     Resources:
-        SDDDriverDynamoDB:
+        DynamoDB:
             Type: AWS::DynamoDB::Table
             Properties:
                 TableName: SDD-Driver

@@ -9,14 +9,22 @@ provider:
 
 functions:
     app:
+        name: API
         handler: index.handler
         events:
             - http: GET /
             - http: 'GET /{proxy+}'
+        name: DynamoToElastic
+        handler: d2e.handler
+            - stream:
+                type: dynamodb
+                batchSize: 1
+                enabled: true
+                arn: { "Fn::GetAtt": ["SDD-Driver-DynamoDB", "StreamArn"] }
 
 resources:
     Resources:
-        DynamoDB:
+        SDD-Driver-DynamoDB:
             Type: AWS::DynamoDB::Table
             Properties:
                 TableName: SDD-Driver
@@ -27,3 +35,5 @@ resources:
                     - AttributeName: DrivingLicenseNumber
                       KeyType: HASH
                 BillingMode: PAY_PER_REQUEST
+                StreamSpecification:
+                  StreamViewType: NEW_IMAGE

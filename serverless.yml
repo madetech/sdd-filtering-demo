@@ -17,6 +17,7 @@ functions:
     app:
         name: DynamoToElastic
         handler: d2e.handler
+        events:
             - stream:
                 type: dynamodb
                 batchSize: 1

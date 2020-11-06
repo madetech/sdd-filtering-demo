@@ -2,7 +2,7 @@ service: sdd-filtering-demo
 
 provider:
     name: aws
-    runtime: nodejs12.x
+    runtime: nodejs14.x
     stage: dev
     region: eu-west-2
     apiGateway.shouldStartNameWithService: true
